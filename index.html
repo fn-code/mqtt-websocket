@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script type="text/javascript" src="mqtt.min.js"></script>
+    <script type="text/javascript">
+        var client = mqtt.connect("ws://localhost:9003") // you add a ws:// url here
+        client.subscribe("p1/gps")
+        client.on("message", function (topic, payload) {
+            var res = JSON.parse(payload.toString());
+            console.log(res);
+            // client.end()
+        });
+
+        // client.publish("mqtt/demo", "hello world!")
+    </script>
+</head>
+<body>
+<div>
+    <h1>MQTT Over Websocket</h1>
+</div>
+</body>
+</html>
